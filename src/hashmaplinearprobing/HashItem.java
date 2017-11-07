@@ -1,14 +1,14 @@
-package hashmapchaining;
+package hashmaplinearprobing;
 
 public class HashItem {
 
     private int key;
     private int value;
-    private HashItem nextHashItem;
 
     public HashItem(int key, int value) {
         this.key = key;
         this.value = value;
+
     }
 
     public int getKey() {
@@ -26,14 +26,5 @@ public class HashItem {
     public void setValue(int value) {
         this.value = value;
     }
-
-    public HashItem getNextHashItem() {
-        return nextHashItem;
-    }
-
-    public void setNextHashItem(HashItem nextHashItem) {
-        this.nextHashItem = nextHashItem;
-    }
-
 
 }
