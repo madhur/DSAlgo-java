@@ -9,13 +9,24 @@ public class Node {
     private boolean leaf;
     private boolean visited;
 
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    private int value;
+
     public Node(String character) {
         this.character = character;
         children = new Node[Constants.ALPHABET_SIZE];
     }
 
-    public void setChild(int index, Node node) {
+    public void setChild(int index, Node node, int value) {
         this.children[index] = node;
+        node.setValue(value);
     }
 
     public String getCharacter() {
