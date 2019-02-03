@@ -8,4 +8,6 @@ public interface Tree<T> {
     T getMax();
     T getMin();
 
+
+    int height();
 }

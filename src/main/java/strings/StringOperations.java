@@ -85,4 +85,25 @@ public class StringOperations {
         return suffixesList;
 
     }
+
+    public Integer IntegerToString(String text) {
+        Integer num = 0;
+        boolean isNegative = false;
+        for(int i=0; i<text.length(); ++i) {
+            char j = text.charAt(i);
+            if (j == '-') {
+                isNegative = true;
+            }
+            else {
+                int val = Character.getNumericValue(j);
+                num = num + val * (int)Math.pow(10, text.length() - i -1);
+            }
+        }
+
+        if(isNegative) {
+            return num*-1;
+        }
+
+        return num;
+    }
 }

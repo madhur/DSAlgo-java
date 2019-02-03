@@ -18,6 +18,8 @@ public class App {
         System.out.println(bst.getMin());
 
         bst.traversal();
+        System.out.println("");
+        System.out.println("Height of tree is : " + bst.height());
 
     }
 }
