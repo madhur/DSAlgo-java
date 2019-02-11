@@ -12,6 +12,12 @@ public class Node<T> {
         this.data = data;
     }
 
+    public Node(T data, Node<T> leftChild, Node<T> rightChild) {
+        this.data = data;
+        this.leftChild = leftChild;
+        this.rightChild = rightChild;
+    }
+
     public T getData() {
         return data;
     }

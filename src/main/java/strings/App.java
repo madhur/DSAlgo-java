@@ -27,6 +27,12 @@ public class App {
 
         System.out.println(operations.longestRepeatedSubstring("Hellohehehello"));
 
+        Permutations permutations = new Permutations("aaa");
+        permutations.permute();
+
+        Combinations combinations = new Combinations("abcd");
+        combinations.combine();
+
     }
 
 
