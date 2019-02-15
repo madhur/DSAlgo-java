@@ -10,11 +10,17 @@ public class App {
         list.insert(-2);
         list.insert(3);
         list.insert(100);
+        list.insert(3);
+        list.insert(-2);
+        list.insert(-2);
 
-        list.remove(100);
+
 
         list.traverseList();
 
+        list.removeDuplicates();
+        System.out.println("");
+        list.traverseList();
 
     }
 }

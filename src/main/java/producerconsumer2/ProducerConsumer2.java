@@ -1,9 +1,9 @@
-package producerconsumer;
+package producerconsumer2;
 
 
 import java.util.Random;
 
-public class ProducerConsumer {
+public class ProducerConsumer2 {
 
     public static void main(String[] args) {
 
@@ -28,7 +28,7 @@ class IntBuffer {
         buffer= new int[10];
     }
 
-    public void add(int item) {
+    public synchronized  void add(int item) {
         while(true) {
             if (i < buffer.length) {
                 buffer[i] = item;
@@ -38,7 +38,7 @@ class IntBuffer {
         }
     }
 
-    public Integer remove() {
+    public synchronized Integer remove() {
         while(true) {
             if (i > 0) {
                 int item = buffer[i];
@@ -54,7 +54,7 @@ class Producer implements Runnable {
 
     IntBuffer sharedResource;
 
-    public Producer( IntBuffer  sharedResource) {
+    public Producer( IntBuffer sharedResource) {
         this.sharedResource = sharedResource;
     }
 
@@ -72,7 +72,7 @@ class Producer implements Runnable {
 
 class Consumer implements  Runnable {
 
-    IntBuffer  sharedResource;
+    IntBuffer sharedResource;
 
     public Consumer( IntBuffer sharedResource) {
         this.sharedResource = sharedResource;

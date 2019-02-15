@@ -1,5 +1,8 @@
 package LinkedList;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     private Node<T> root;
@@ -84,4 +87,48 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     public int size() {
         return this.sizeOfList;
     }
+
+    @Override
+    public void reverse() {
+       Node<T> prev = null;
+       Node<T> curr = root;
+       Node<T> next = null;
+
+       while (curr != null) {
+           next = curr.getNextNode();
+           curr.setNextNode(prev);
+           prev = curr;
+           curr = next;
+
+       }
+
+       root = prev;
+    }
+
+    @Override
+    public void removeDuplicates() {
+        Set<Node> nodeSet = new HashSet<>();
+        Node<T> previousNode = null;
+
+        if (this.root == null) {
+            return;
+        }
+
+        Node<T> actualNode = this.root;
+
+        while (actualNode != null) {
+            if (!nodeSet.contains(actualNode)) {
+                nodeSet.add(actualNode);
+                previousNode = actualNode;
+            }
+            else {
+                previousNode.setNextNode(actualNode.getNextNode());
+            }
+            actualNode = actualNode.getNextNode();
+
+        }
+
+    }
+
+
 }

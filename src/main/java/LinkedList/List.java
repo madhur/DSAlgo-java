@@ -6,5 +6,7 @@ public interface List<T> {
     public void remove(T data);
     public void traverseList();
     public int size();
+    public void reverse();
+    void removeDuplicates();
 
 }

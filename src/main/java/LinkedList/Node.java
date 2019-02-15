@@ -30,4 +30,16 @@ public class Node<T extends Comparable<T>> {
     public String toString() {
         return data.toString();
     }
+
+    @Override
+    public int hashCode() {
+        Integer t = (Integer) data;
+        return t;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Node node = (Node) obj;
+        return data==node.getData();
+    }
 }

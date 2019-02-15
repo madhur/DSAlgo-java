@@ -1,9 +1,9 @@
-package producerconsumer;
+package producerconsumer3;
 
 
 import java.util.Random;
 
-public class ProducerConsumer {
+public class ProducerConsumer3 {
 
     public static void main(String[] args) {
 
@@ -24,28 +24,37 @@ class IntBuffer {
     int i;
 
     public IntBuffer() {
-        i=0;
-        buffer= new int[10];
+        i = 0;
+        buffer = new int[10];
     }
 
-    public void add(int item) {
-        while(true) {
-            if (i < buffer.length) {
-                buffer[i] = item;
-                i++;
-                return;
+    public synchronized void add(int item) {
+        while (i == buffer.length - 1) {
+
+            try {
+                wait();
+            } catch (InterruptedException e) {
+
             }
+            buffer[i] = item;
+            i++;
+            notifyAll();
         }
     }
 
-    public Integer remove() {
-        while(true) {
-            if (i > 0) {
-                int item = buffer[i];
-                i--;
-                return item;
+    public synchronized Integer remove() {
+        while (i == 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+
             }
         }
+        int item = buffer[i];
+        i--;
+        notifyAll();
+        return item;
+
     }
 
 }
@@ -54,14 +63,14 @@ class Producer implements Runnable {
 
     IntBuffer sharedResource;
 
-    public Producer( IntBuffer  sharedResource) {
+    public Producer(IntBuffer sharedResource) {
         this.sharedResource = sharedResource;
     }
 
     @Override
     public void run() {
 
-        while(true) {
+        while (true) {
 
             Integer item = new Random().nextInt(10);
             sharedResource.add(item);
@@ -70,17 +79,17 @@ class Producer implements Runnable {
     }
 }
 
-class Consumer implements  Runnable {
+class Consumer implements Runnable {
 
-    IntBuffer  sharedResource;
+    IntBuffer sharedResource;
 
-    public Consumer( IntBuffer sharedResource) {
+    public Consumer(IntBuffer sharedResource) {
         this.sharedResource = sharedResource;
     }
 
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             Integer item = sharedResource.remove();
             if (item != null) {
                 System.out.println("!!!Consumed: " + item);
