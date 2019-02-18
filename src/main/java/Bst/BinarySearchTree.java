@@ -2,6 +2,10 @@ package Bst;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
     private Node<T> root;
 
     @Override
@@ -25,14 +29,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     private void inOrderTraversal(Node<T> node) {
 
-        if(node.getLeftChild()!=null) {
-            inOrderTraversal(node.getLeftChild());
+        if(node.getLeft()!=null) {
+            inOrderTraversal(node.getLeft());
         }
 
         System.out.print(node + " - ");
 
-        if(node.getRightChild() != null) {
-            inOrderTraversal(node.getRightChild());
+        if(node.getRight() != null) {
+            inOrderTraversal(node.getRight());
         }
 
     }
@@ -40,19 +44,19 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     private void insertNode(T newData, Node<T> node) {
         if (newData.compareTo(node.getData()) < 0) {
-            if ( node.getLeftChild() != null) {
-                insertNode(newData, node.getLeftChild());
+            if ( node.getLeft() != null) {
+                insertNode(newData, node.getLeft());
             } else {
                 Node<T> newNode = new Node<>(newData);
-                node.setLeftChild(newNode);
+                node.setLeft(newNode);
             }
 
         } else {
-            if ( node.getRightChild() != null) {
-                insertNode(newData, node.getRightChild());
+            if ( node.getRight() != null) {
+                insertNode(newData, node.getRight());
             } else {
                 Node<T> newNode = new Node<>(newData);
-                node.setRightChild(newNode);
+                node.setRight(newNode);
             }
         }
     }
@@ -67,23 +71,23 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         if (node == null) return node;
 
         if(data.compareTo(node.getData()) < 0) {
-            node.setLeftChild(deleteNode(node.getLeftChild(), data));
+            node.setLeft(deleteNode(node.getLeft(), data));
         } else if (data.compareTo(node.getData()) > 0) {
-            node.setRightChild(deleteNode(node.getRightChild(), data));
+            node.setRight(deleteNode(node.getRight(), data));
         } else {
-            if(node.getLeftChild() == null && node.getRightChild() == null) {
+            if(node.getLeft() == null && node.getRight() == null) {
                 System.out.println("Removing a left node...");
                 return null;
             }
 
-            if (node.getLeftChild() == null) {
+            if (node.getLeft() == null) {
                 System.out.println("Removing the right child...");
-                Node<T> tempNode = node.getRightChild();
+                Node<T> tempNode = node.getRight();
                 node = null;
                 return tempNode;
-            } else if(node.getRightChild() == null) {
+            } else if(node.getRight() == null) {
                 System.out.println("Removing the left child...");
-                Node<T> tempNode = node.getLeftChild();
+                Node<T> tempNode = node.getLeft();
                 node = null;
                 return tempNode;
             }
@@ -91,10 +95,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
             // this is the node with two children case !!!
 
             System.out.println("Removing item with two children...");
-            Node<T> tempNode = getPredecessor(node.getLeftChild());
+            Node<T> tempNode = getPredecessor(node.getLeft());
 
             node.setData(tempNode.getData());
-            node.setLeftChild(deleteNode(node.getLeftChild(), tempNode.getData()));
+            node.setLeft(deleteNode(node.getLeft(), tempNode.getData()));
 
         }
 
@@ -103,8 +107,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     private Node<T> getPredecessor(Node<T> node) {
-        if (node.getRightChild() != null)
-            return getPredecessor(node.getRightChild());
+        if (node.getRight() != null)
+            return getPredecessor(node.getRight());
 
         return node;
     }
@@ -122,9 +126,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     private T getMaxNode(Node<T> node) {
 
-        if (node.getRightChild() != null) {
+        if (node.getRight() != null) {
 
-            return getMaxNode(node.getRightChild());
+            return getMaxNode(node.getRight());
         }
 
         return node.getData();
@@ -151,14 +155,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
             return 0;
         }
 
-        return Math.max(maxHeight(root.getLeftChild()), maxHeight(root.getRightChild())) + 1;
+        return Math.max(maxHeight(root.getLeft()), maxHeight(root.getRight())) + 1;
     }
 
     private T getMinNode(Node<T> node) {
 
-        if (node.getLeftChild() != null) {
+        if (node.getLeft() != null) {
 
-            return getMinNode(node.getLeftChild());
+            return getMinNode(node.getLeft());
         }
 
         return node.getData();

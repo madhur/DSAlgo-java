@@ -1,7 +1,6 @@
 package Bst;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,12 +68,12 @@ public class LowestCommonAncestor {
             return;
         }
 
-        findPath(node.getLeftChild(), x, path);
+        findPath(node.getLeft(), x, path);
         if (path.size() > 0) {
             path.add(node.getData());
             return;
         }
-        findPath(node.getRightChild(), x , path);
+        findPath(node.getRight(), x , path);
         if (path.size() > 0) {
             path.add(node.getData());
             return;

@@ -1,21 +1,20 @@
 package Bst;
 
-public class Node<T> {
+public class Node<T extends Comparable<T>> {
 
-    private T data;
+    T data;
 
-
-    private Node<T> leftChild;
-    private Node<T> rightChild;
+    Node<T> left;
+    Node<T> right;
 
     public Node(T data) {
         this.data = data;
     }
 
-    public Node(T data, Node<T> leftChild, Node<T> rightChild) {
+    public Node(T data, Node<T> left, Node<T> right) {
         this.data = data;
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
+        this.left = left;
+        this.right = right;
     }
 
     public T getData() {
@@ -26,20 +25,20 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node<T> getLeftChild() {
-        return leftChild;
+    public Node<T> getLeft() {
+        return left;
     }
 
-    public void setLeftChild(Node<T> leftChild) {
-        this.leftChild = leftChild;
+    public void setLeft(Node<T> left) {
+        this.left = left;
     }
 
-    public Node<T> getRightChild() {
-        return rightChild;
+    public Node<T> getRight() {
+        return right;
     }
 
-    public void setRightChild(Node<T> rightChild) {
-        this.rightChild = rightChild;
+    public void setRight(Node<T> right) {
+        this.right = right;
     }
 
 

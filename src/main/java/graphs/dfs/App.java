@@ -27,6 +27,7 @@ public class App {
         list.add(v5);
 
         Dfs dfs = new Dfs();
-        dfs.dfs(list);
+        //dfs.dfs(list);
+        System.out.println(dfs.isRootBetweenNodes(v1, v5));
     }
 }

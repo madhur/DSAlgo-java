@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
     private Node<T> root;
     private int sizeOfList;
 
