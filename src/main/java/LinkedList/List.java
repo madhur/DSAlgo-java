@@ -1,6 +1,6 @@
 package LinkedList;
 
-public interface List<T> {
+public interface List<T extends Comparable<T>> {
 
     public void insert(T data);
     public void remove(T data);
@@ -8,5 +8,6 @@ public interface List<T> {
     public int size();
     public void reverse();
     void removeDuplicates();
+    public Node<T> getRoot();
 
 }

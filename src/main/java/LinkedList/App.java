@@ -22,5 +22,18 @@ public class App {
         System.out.println("");
         list.traverseList();
 
+        callmethod(list.getRoot());
+        System.out.println("Calling third");
+        System.out.println(list.getRoot());
+        list.traverseList();
+
+    }
+
+    private static void callmethod(Node<Integer> head) {
+
+       head.setData(5);
+//        while (head != null) {
+//            head = head.getNextNode();
+//        }
     }
 }

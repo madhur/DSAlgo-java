@@ -1,19 +1,14 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<String> list = new ArrayList<>();
 
-        list.add("ADSF");
-        list.add("sdfdsf");
+        BigInteger n =new BigInteger("1000000000000000000000000000001");
 
-        Object[] array = list.toArray();
-
-        for(Object s:  array) {
-            System.out.println(s);
-        }
     }
 }
