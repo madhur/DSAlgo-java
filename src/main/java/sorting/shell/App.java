@@ -1,6 +1,5 @@
 package sorting.shell;
 
-import jdk.nashorn.tools.Shell;
 
 public class App {
 
